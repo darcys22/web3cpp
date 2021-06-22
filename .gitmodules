@@ -1,3 +1,6 @@
 [submodule "external/cpr"]
 	path = external/cpr
 	url = git@github.com:whoshuu/cpr.git
+[submodule "external/nlohmann"]
+	path = external/nlohmann
+	url = git@github.com:nlohmann/json.git
