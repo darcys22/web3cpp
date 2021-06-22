@@ -1,1 +1,0 @@
-/usr/bin/g++     CMakeFiles/web3cpp.dir/main.cpp.o  -o web3cpp  external/libcpr.a /usr/lib/x86_64-linux-gnu/libcurl.so 
