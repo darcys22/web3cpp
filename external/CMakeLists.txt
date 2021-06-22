@@ -1,0 +1,33 @@
+option(SUBMODULE_CHECK "Enables checking that vendored library submodules are up to date" ON)
+if(SUBMODULE_CHECK)
+  find_package(Git)
+  if(GIT_FOUND)
+    function(check_submodule relative_path)
+      execute_process(COMMAND git rev-parse "HEAD" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${relative_path} OUTPUT_VARIABLE localHead)
+      execute_process(COMMAND git rev-parse "HEAD:external/${relative_path}" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} OUTPUT_VARIABLE checkedHead)
+      string(COMPARE EQUAL "${localHead}" "${checkedHead}" upToDate)
+      if (upToDate)
+        message(STATUS "Submodule 'external/${relative_path}' is up-to-date")
+      else()
+        message(FATAL_ERROR "Submodule 'external/${relative_path}' is not up-to-date. Please update with\ngit submodule update --init --recursive\nor run cmake with -DSUBMODULE_CHECK=OFF")
+      endif()
+    endfunction ()
+
+    message(STATUS "Checking submodules")
+    check_submodule(nlohmann)
+    check_submodule(cpr)
+  endif()
+endif()
+
+set(JSON_BuildTests OFF CACHE INTERNAL "")
+add_subdirectory(nlohmann EXCLUDE_FROM_ALL)
+
+find_package(CURL REQUIRED COMPONENTS HTTP HTTPS SSL)
+
+file(GLOB cpr_sources ${conf_depends} cpr/cpr/*.cpp)
+
+add_library(cpr STATIC EXCLUDE_FROM_ALL ${cpr_sources})
+target_link_libraries(cpr PUBLIC CURL::libcurl)
+target_include_directories(cpr PUBLIC cpr/include)
+target_compile_definitions(cpr PUBLIC CPR_CURL_NOSIGNAL)
+add_library(cpr::cpr ALIAS cpr)
