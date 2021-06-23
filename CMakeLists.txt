@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
+option(BUILD_API_EXAMPLES "Build Examples" ON)
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_program(CCACHE_PROGRAM ccache)
@@ -28,22 +30,11 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
-# our pacakges we require
-# set(DEPS sodium)
-
-foreach(lib ${DEPS})
-  find_package(${lib} REQUIRED)
-endforeach()
-
-#include_directories(external/rapidjson/include external)
 # our subdirectories with our libs in it
-#add_subdirectory(src)
+add_subdirectory(src)
+
 add_subdirectory(external)
 
-add_executable(${project_name} main.cpp)
-target_link_libraries(${project_name} PUBLIC cpr::cpr)
-target_link_libraries(${project_name} PUBLIC nlohmann_json::nlohmann_json)
-
-foreach(lib ${DEPS})
-  target_link_libraries(${project_name} PUBLIC ${lib})
-endforeach()
+if (BUILD_API_EXAMPLES)
+    add_subdirectory("examples")
+endif ()
