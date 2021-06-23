@@ -51,11 +51,13 @@ void Web3::Launch() {
 
     json empty_array_explicit = json::array();
     json payload = {
-      {"method", "getheight"},
-      {"params", empty_array_explicit}
+      {"jsonrpc", "2.0"},
+      {"method", "net_version"},
+      {"params", empty_array_explicit},
+      {"id", 1}
     };
 
-    cpr::Response r = cpr::Post(cpr::Url{imp_->provider_path_ + "/json_rpc"},
+    cpr::Response r = cpr::Post(cpr::Url{imp_->provider_path_},
                    cpr::Body{payload.dump()},
                    cpr::Header{{"Content-Type", "json/application"}});
 

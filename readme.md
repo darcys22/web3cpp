@@ -1,5 +1,8 @@
-# cmake boilerplate
+# Web3cpp (WIP)
 
-basic cmake boilerplate base for C++ projects I use when i want to make a new cmake based project
+c++ implementation of web3
 
-don't fork me, download the zip [here](https://github.com/majestrate/cmake-boilerplate/archive/refs/heads/master.zip) instead and make a new git repo from it.
+### Resouces 
+https://blog.infura.io/ethereum-rpcs-methods/
+https://hackernoon.com/ethereum-create-raw-json-rpc-requests-with-python-for-deploying-and-transacting-with-a-smart-7ceafd6790d9
+https://eth.wiki/json-rpc/API
