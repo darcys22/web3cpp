@@ -9,11 +9,15 @@ namespace web3 {
 
 class Core_Method {
 
-    Core_Method();
-    ~Core_Method();
+public:
 
     std::string name_ = "";
     std::string call_ = "";
+
+    uint8_t params_ = 0;
+
+    Core_Method(std::string n, std::string c, uint8_t p): name_(n),call_(c),params_(p) {};
+    //~Core_Method();
 
 //var Method = function Method(options) {
 
@@ -30,7 +34,6 @@ class Core_Method {
     //this.extraFormatters = options.extraFormatters;
     //this.abiCoder = options.abiCoder; // Will be used to encode the revert reason string
 
-    //this.requestManager = options.requestManager;
 
     //// reference to eth.accounts
     //this.accounts = options.accounts;
@@ -48,13 +51,7 @@ class Core_Method {
 
 };
 
-//std::map<uint8_t, std::string> methods = {{1, "Apple",}
-                                          //{2, "Banana",},
-                                          //{3, "Mango",},
-                                          //{4, "Raspberry",},
-                                          //{5, "Blackberry",},
-                                          //{6, "Cocoa",}};
-
+std::map<std::string, Core_Method> methods = {{"getProtocolVersion", Core_Method("getProtocolVersion", "eth_protocolVersion", 0)}};
 
 
     //var methods = [
