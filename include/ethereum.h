@@ -19,6 +19,7 @@ public:
     Core_Method(std::string n, std::string c, uint8_t p): name_(n),call_(c),params_(p) {};
     //~Core_Method();
 
+    uint8_t param_count(){ return params_; };
 //var Method = function Method(options) {
 
     //if (!options.call || !options.name) {
@@ -272,6 +273,8 @@ class EthImp : public EthInterface {
     uint8_t GetProtocolVersion();
     uint64_t GetGasPrice();
     uint64_t GetBlockNumber();
+    
+    std::optional<std::string> Call(std::string name, ...);
 };
 
 } // namespace web3
