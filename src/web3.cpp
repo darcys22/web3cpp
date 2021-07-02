@@ -1,5 +1,4 @@
 #include "web3.h"
-#include "web3cpp_interfaces.h"
 #include "ethereum.h"
 
 #include <cpr/cpr.h>
@@ -19,17 +18,17 @@ public:
     Web3Imp();
     ~Web3Imp();
 
-    std::unique_ptr<EthImp> Eth_imp_;
+    std::unique_ptr<Ethereum> Eth_imp_;
 
     std::string provider_path_ = "";
     int last_port_ = 0;
 };
 
 Web3Imp::Web3Imp() {
-  Eth_imp_ = new EthImp();
+  Eth_imp_ = std::make_unique<Ethereum>();
 }
 Web3Imp::~Web3Imp() { 
-  delete Eth_imp_;
+  Eth_imp_.reset();
 }
 
 // Web3.
@@ -43,9 +42,10 @@ Web3::~Web3() {
 
 void Web3::SetProvider(const std::string& provider) {
   imp_->provider_path_ = provider;
+  imp_->Eth_imp_->provider_path_ = provider;
 }
 
-const EthInterface* Web3::Eth() const {
+const Ethereum* Web3::Eth() const {
   return imp_->Eth_imp_.get();
 }
 

@@ -1,5 +1,5 @@
 #include "web3.h"
-#include <iostreamt
+#include <iostream>
 
 int main(int argc, char* argv[]) {
     web3::Web3 web3;
@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     //web3.Launch();
 
     std::cout << "finished" << "\n";
-    web3.Eth()->Call("hello", "1");
+    web3.Eth()->GetBalance("0x407d73d8a49eeb85d32cf465507dd71d507100c1", 0);
 
     return 0;
 }

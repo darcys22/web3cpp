@@ -16,4 +16,7 @@ public:
 
     virtual std::optional<std::string> Call(std::string name, std::string args...) const = 0;
 
+    virtual std::string provider_path;
+    virtual last_port_ = 0;
+
 };

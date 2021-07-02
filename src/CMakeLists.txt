@@ -1,6 +1,7 @@
 add_library(libweb3cpp
   STATIC
   web3.cpp
+  ethereum.cpp
 )
 
 set_target_properties(libweb3cpp PROPERTIES OUTPUT_NAME web3cpp)

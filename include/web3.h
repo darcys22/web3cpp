@@ -1,6 +1,6 @@
 #pragma once
 
-#include "web3cpp_interfaces.h"
+#include "ethereum.h"
 
 #include <string>
 #include <cstdint>
@@ -19,7 +19,7 @@ public:
     void SetProvider(const std::string& provider);
 
     //! The EthInterface is used to query the ethereum provider.
-    const EthInterface* Eth() const;
+    const Ethereum* Eth() const;
 
     void Launch();
 
