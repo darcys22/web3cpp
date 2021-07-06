@@ -82,7 +82,38 @@ uint64_t Ethereum::SendSignedTransaction() const { return 0; }; //call: 'eth_sen
 uint64_t Ethereum::SignTransaction() const { return 0; }; //call: 'eth_signTransaction',
 uint64_t Ethereum::SendTransaction() const { return 0; }; //call: 'eth_sendTransaction',
 uint64_t Ethereum::Sign() const { return 0; }; //call: 'eth_sign',
-uint64_t Ethereum::Call() const { return 0; }; //call: 'eth_call',
+std::string Ethereum::Call(std::string from_param, std::string to_param, std::string gas_param, std::string gasPrice_param, std::string value_param, std::string data, std::string block) const { //call: 'eth_call',
+
+
+  //curl https://mainnet.infura.io/v3/YOUR-PROJECT-ID \
+    -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"jsonrpc":"2.0","method":"eth_call","params": [{"from": "0xb60e8dd61c5d32be8058bb8eb970870f07233155","to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567","gas": "0x76c0","gasPrice": "0x9184e72a000","value": "0x9184e72a","data": "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"}, "latest"],"id":1}'
+  
+  json params = {
+    {"from", from_param},
+    {"to", to_param},
+    {"gas", gas_param},
+    {"gasPrice", gasPrice_param},
+    {"value", value_param},
+    {"data", data},
+  };
+
+  json payload = {
+    {"jsonrpc", "2.0"},
+    {"method", "eth_call"},
+    {"params", json::array({params, block})},
+    {"id", 1}
+  };
+
+  cpr::Response r = cpr::Post(cpr::Url{provider_path_},
+                 cpr::Body{payload.dump()},
+                 cpr::Header{{"Content-Type", "json/application"}});
+
+  std::cout << r.text << '\n';
+
+  return r.text; 
+}; 
 uint64_t Ethereum::EstimateGas() const { return 0; }; //call: 'eth_estimateGas',
 uint64_t Ethereum::SubmitWork() const { return 0; }; //call: 'eth_submitWork',
 uint64_t Ethereum::GetWork() const { return 0; }; //call: 'eth_getWork',

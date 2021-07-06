@@ -35,7 +35,7 @@ public:
     uint64_t SignTransaction() const; //call: 'eth_signTransaction',
     uint64_t SendTransaction() const; //call: 'eth_sendTransaction',
     uint64_t Sign() const; //call: 'eth_sign',
-    uint64_t Call() const; //call: 'eth_call',
+    std::string Call(std::string from_param, std::string to_param, std::string gas_param, std::string gasPrice_param, std::string value_param, std::string data, std::string block) const; //call: 'eth_call',
     uint64_t EstimateGas() const; //call: 'eth_estimateGas',
     uint64_t SubmitWork() const; //call: 'eth_submitWork',
     uint64_t GetWork() const; //call: 'eth_getWork',

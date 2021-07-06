@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 option(BUILD_API_EXAMPLES "Build Examples" ON)
+option(BUILD_API_TESTS "Build Tests" ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -37,4 +38,8 @@ add_subdirectory(external)
 
 if (BUILD_API_EXAMPLES)
     add_subdirectory("examples")
+endif ()
+
+if (BUILD_API_TESTS)
+    add_subdirectory("tests")
 endif ()
