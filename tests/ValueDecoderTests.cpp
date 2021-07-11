@@ -4,13 +4,14 @@
 // terms governing use, modification, and redistribution, is contained in the
 // file LICENSE at the root of the source code distribution tree.
 
-#include "Ethereum/ABI/ValueDecoder.h"
+#include "ethereum/ABI/ValueDecoder.h"
+#include "web3.h"
 #include <HexCoding.h>
 
 #include <gtest/gtest.h>
 
-using namespace TW;
-using namespace TW::Ethereum;
+using namespace web3;
+using namespace web3::Ethereum;
 
 uint256_t decodeFromHex(std::string s) {
     auto data = parse_hex(s);
