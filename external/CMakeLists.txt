@@ -16,11 +16,16 @@ if(SUBMODULE_CHECK)
     message(STATUS "Checking submodules")
     check_submodule(nlohmann)
     check_submodule(cpr)
+    check_submodule(gtest)
   endif()
 endif()
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 add_subdirectory(nlohmann EXCLUDE_FROM_ALL)
+
+add_subdirectory(googletest EXCLUDE_FROM_ALL)
+target_include_directories(googletest PUBLIC googletest/include)
+target_include_directories(googletest PUBLIC googletest)
 
 find_package(CURL REQUIRED COMPONENTS HTTP HTTPS SSL)
 

@@ -1,5 +1,4 @@
-#include "test_get_balance.h"
-#include "test_call.h"
+#include "all_tests.h"
 
 #include <iostream>
 #include <string>
