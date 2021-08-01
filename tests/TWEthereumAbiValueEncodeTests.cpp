@@ -12,7 +12,7 @@
 #include "../interface/TWTestUtilities.h"
 #include <gtest/gtest.h>
 
-using namespace TW;
+using namespace web3;
 using namespace std;
 
 const string brownFox = "The quick brown fox jumps over the lazy dog";
@@ -27,7 +27,7 @@ TEST(TWEthereumAbiValue, encodeBool) {
 }
 
 TWData* _Nonnull buildUInt256(const uint256_t& value) {
-    const Data data = TW::store(value);
+    const Data data = web3::store(value);
     return TWDataCreateWithBytes(data.data(), data.size());
 }
 

@@ -11,3 +11,4 @@ add_executable(all_tests ${test_SRC})
 set_target_properties(all_tests PROPERTIES FOLDER tests)
 
 target_link_libraries(all_tests libweb3cpp)
+target_link_libraries(all_tests gtest gtest_main)

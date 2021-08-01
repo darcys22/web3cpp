@@ -4,14 +4,14 @@
 // terms governing use, modification, and redistribution, is contained in the
 // file LICENSE at the root of the source code distribution tree.
 
-#include "Ethereum/Address.h"
-#include "Ethereum/RLP.h"
-#include "Ethereum/Signer.h"
+#include "ethereum/Address.h"
+#include "ethereum/RLP.h"
+#include "ethereum/Signer.h"
 #include "HexCoding.h"
 
 #include <gtest/gtest.h>
 
-namespace TW::Ethereum {
+namespace web3::ethereum {
 
 using boost::multiprecision::uint256_t;
 
@@ -81,8 +81,8 @@ TEST(EthereumSigner, SignERC20Transfer) {
     auto signature = Signer::sign(key, 1, transaction);
 
     ASSERT_EQ(signature.v, 37);
-    ASSERT_EQ(hex(TW::store(signature.r)), "724c62ad4fbf47346b02de06e603e013f26f26b56fdc0be7ba3d6273401d98ce");
-    ASSERT_EQ(hex(TW::store(signature.s)), "032131cae15da7ddcda66963e8bef51ca0d9962bfef0547d3f02597a4a58c931");
+    ASSERT_EQ(hex(web3::store(signature.r)), "724c62ad4fbf47346b02de06e603e013f26f26b56fdc0be7ba3d6273401d98ce");
+    ASSERT_EQ(hex(web3::store(signature.s)), "032131cae15da7ddcda66963e8bef51ca0d9962bfef0547d3f02597a4a58c931");
 }
 
-} // namespace TW::Ethereum
+} // namespace web3::ethereum

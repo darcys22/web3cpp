@@ -9,8 +9,8 @@
 
 #include <gtest/gtest.h>
 
-using namespace TW;
-using namespace TW::Ethereum;
+using namespace web3;
+using namespace web3::ethereum;
 
 Data data;
 
@@ -99,7 +99,7 @@ TEST(EthereumAbiValueEncoder, encodeBytes) {
 
 TEST(EthereumAbiValueEncoder, encodeBytesDyn) {
     Data data;
-    ABI::ValueEncoder::encodeBytesDyn(TW::data(std::string("trustwallet")), data);
+    ABI::ValueEncoder::encodeBytesDyn(web3::data(std::string("trustwallet")), data);
     checkLast32BytesEqual(data, "31924c4e2bb082322d1efa718bf67c73ca297b481dac9f76ad35670cff0056a3");
 }
 

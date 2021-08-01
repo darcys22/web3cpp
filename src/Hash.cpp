@@ -18,7 +18,7 @@
 
 #include <string>
 
-using namespace TW;
+using namespace web3;
 
 Data Hash::sha1(const byte* data, size_t size) {
     Data result(sha1Size);
@@ -118,7 +118,7 @@ Data Hash::xxhash64concat(const byte* data, size_t size)
 {
     auto key1 = xxhash64(data, size, 0);
     const auto key2 = xxhash64(data, size, 1);
-    TW::append(key1, key2);
+    web3::append(key1, key2);
     return key1;
 }
 

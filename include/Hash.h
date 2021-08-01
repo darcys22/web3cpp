@@ -13,7 +13,7 @@
 namespace web3::Hash {
 
 /// Hashing function.
-typedef web3::Data (*HasherSimpleType)(const TW::byte*, size_t);
+typedef web3::Data (*HasherSimpleType)(const web3::byte*, size_t);
 using Hasher = std::function<Data(const byte*, size_t)>;
 
 // Digest size constants, duplicating constants from underlying lib 
@@ -203,4 +203,4 @@ inline Data groestl512d(const byte* data, size_t size) {
 /// Compute the SHA256-based HMAC of a message
 Data hmac256(const Data& key, const Data& message);
 
-} // namespace TW::Hash
+} // namespace web3::Hash

@@ -15,9 +15,9 @@
 
 #include <gtest/gtest.h>
 
-using namespace TW;
-using namespace TW::Ethereum;
-using namespace TW::Ethereum::ABI;
+using namespace web3;
+using namespace web3::Ethereum;
+using namespace web3::Ethereum::ABI;
 
 TEST(TWEthereumSigner, EmptyValue) {
     auto str = std::string("");

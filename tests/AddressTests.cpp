@@ -4,14 +4,14 @@
 // terms governing use, modification, and redistribution, is contained in the
 // file LICENSE at the root of the source code distribution tree.
 
-#include "Ethereum/Address.h"
+#include "ethereum/Address.h"
 #include "HexCoding.h"
 #include "PrivateKey.h"
 
 #include <gtest/gtest.h>
 
-using namespace TW;
-using namespace TW::Ethereum;
+using namespace web3;
+using namespace web3::ethereum;
 
 TEST(EthereumAddress, Invalid) {
     ASSERT_FALSE(Address::isValid("abc"));

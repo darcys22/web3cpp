@@ -11,7 +11,7 @@
 #include "../interface/TWTestUtilities.h"
 #include <gtest/gtest.h>
 
-using namespace TW;
+using namespace web3;
 using namespace std;
 
 TEST(TWEthereumAbiValue, decodeUInt256) {

@@ -4,13 +4,13 @@
 // terms governing use, modification, and redistribution, is contained in the
 // file LICENSE at the root of the source code distribution tree.
 
-#include "Ethereum/RLP.h"
+#include "ethereum/RLP.h"
 #include "HexCoding.h"
 
 #include <gtest/gtest.h>
 
-using namespace TW;
-using namespace TW::Ethereum;
+using namespace web3;
+using namespace web3::ethereum;
 using boost::multiprecision::uint256_t;
 
 TEST(RLP, Strings) {

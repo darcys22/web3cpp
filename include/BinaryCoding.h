@@ -13,7 +13,7 @@
 #include <vector>
 #include <string>
 
-namespace TW {
+namespace web3 {
 
 /// Encodes a 16-bit little-endian value into the provided buffer.
 inline void encode16LE(uint16_t val, std::vector<uint8_t>& data) {
@@ -22,8 +22,11 @@ inline void encode16LE(uint16_t val, std::vector<uint8_t>& data) {
 }
 
 /// Decodes a 16-bit little-endian value from the provided buffer.
-inline uint16_t decode16LE(const uint8_t* _Nonnull src) {
-    return static_cast<uint16_t>((src[0]) | ((uint16_t)(src[1]) << 8));
+inline uint16_t decode16LE(const uint8_t* src) {
+    if (src)
+      return static_cast<uint16_t>((src[0]) | ((uint16_t)(src[1]) << 8));
+    else
+      throw std::invalid_argument( "received null pointer" );
 }
 
 /// Encodes a 32-bit little-endian value into the provided buffer.
@@ -35,20 +38,21 @@ inline void encode32LE(uint32_t val, std::vector<uint8_t>& data) {
 }
 
 /// Decodes a 32-bit little-endian value from the provided buffer.
-inline uint32_t decode32LE(const uint8_t* _Nonnull src) {
-    // clang-format off
-    return static_cast<uint32_t>(src[0])
-        | (static_cast<uint32_t>(src[1]) << 8)
-        | (static_cast<uint32_t>(src[2]) << 16)
-        | (static_cast<uint32_t>(src[3]) << 24);
-    // clang-format on
+inline uint32_t decode32LE(const uint8_t* src) {
+    if (src)
+      return static_cast<uint32_t>(src[0])
+          | (static_cast<uint32_t>(src[1]) << 8)
+          | (static_cast<uint32_t>(src[2]) << 16)
+          | (static_cast<uint32_t>(src[3]) << 24);
+    else
+      throw std::invalid_argument( "received null pointer" );
 }
 
 /// Encodes a 64-bit little-endian value into the provided buffer.
 void encode64LE(uint64_t val, std::vector<uint8_t>& data);
 
 /// Decodes a 64-bit little-endian value from the provided buffer.
-uint64_t decode64LE(const uint8_t* _Nonnull src);
+uint64_t decode64LE(const uint8_t* src);
 
 /// Returns the number of bytes it would take to serialize the provided value
 /// as a variable-length integer (varint).
@@ -76,8 +80,11 @@ inline void encode16BE(uint16_t val, std::vector<uint8_t>& data) {
 }
 
 /// Decodes a 16-bit big-endian value from the provided buffer.
-inline uint16_t decode16BE(const uint8_t* _Nonnull src) {
-    return static_cast<uint16_t>((src[1]) | ((uint16_t)(src[0]) << 8));
+inline uint16_t decode16BE(const uint8_t* src) {
+    if (src)
+      return static_cast<uint16_t>((src[1]) | ((uint16_t)(src[0]) << 8));
+    else
+      throw std::invalid_argument( "received null pointer" );
 }
 
 /// Encodes a 32-bit big-endian value into the provided buffer.
@@ -89,20 +96,21 @@ inline void encode32BE(uint32_t val, std::vector<uint8_t>& data) {
 }
 
 /// Decodes a 32-bit big-endian value from the provided buffer.
-inline uint32_t decode32BE(const uint8_t* _Nonnull src) {
-    // clang-format off
-    return static_cast<uint32_t>(src[3])
-        | (static_cast<uint32_t>(src[2]) << 8)
-        | (static_cast<uint32_t>(src[1]) << 16)
-        | (static_cast<uint32_t>(src[0]) << 24);
-    // clang-format on
+inline uint32_t decode32BE(const uint8_t* src) {
+    if (src)
+      return static_cast<uint32_t>(src[3])
+          | (static_cast<uint32_t>(src[2]) << 8)
+          | (static_cast<uint32_t>(src[1]) << 16)
+          | (static_cast<uint32_t>(src[0]) << 24);
+    else
+      throw std::invalid_argument( "received null pointer" );
 }
 
 /// Encodes a 64-bit big-endian value into the provided buffer.
 void encode64BE(uint64_t val, std::vector<uint8_t>& data);
 
 /// Decodes a 64-bit big-endian value from the provided buffer.
-uint64_t decode64BE(const uint8_t* _Nonnull src);
+uint64_t decode64BE(const uint8_t* src);
 
 /// Encodes an ASCII string prefixed by the length (varInt)
 void encodeString(const std::string& str, std::vector<uint8_t>& data);
