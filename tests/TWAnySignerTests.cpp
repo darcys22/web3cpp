@@ -9,15 +9,15 @@
 #include "HexCoding.h"
 #include "uint256.h"
 #include "proto/Ethereum.pb.h"
-#include "Ethereum/ABI/Function.h"
-#include "Ethereum/ABI/ParamBase.h"
-#include "Ethereum/ABI/ParamAddress.h"
+#include "ethereum/ABI/Function.h"
+#include "ethereum/ABI/ParamBase.h"
+#include "ethereum/ABI/ParamAddress.h"
 
 #include <gtest/gtest.h>
 
 using namespace web3;
-using namespace web3::Ethereum;
-using namespace web3::Ethereum::ABI;
+using namespace web3::ethereum;
+using namespace web3::ethereum::ABI;
 
 TEST(TWEthereumSigner, EmptyValue) {
     auto str = std::string("");

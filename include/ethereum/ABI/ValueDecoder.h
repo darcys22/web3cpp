@@ -11,7 +11,7 @@
 
 #include <vector>
 
-namespace TW::Ethereum::ABI {
+namespace web3::ethereum::ABI {
 
 class ValueDecoder {
 public:
@@ -22,4 +22,4 @@ public:
     // Decode an array of given simple types; return each element as a string in a vector
     static std::vector<std::string> decodeArray(const Data& data, const std::string& elementType);
 };
-} // namespace TW::Ethereum::ABI
+} // namespace web3::ethereum::ABI

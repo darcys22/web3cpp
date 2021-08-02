@@ -11,7 +11,7 @@
 
 #include <string>
 
-namespace TW::Ethereum::ABI {
+namespace web3::ethereum::ABI {
 
 /// Encode a type according to EIP712, into 32 bytes.
 /// Result is appended to the provided Data object.
@@ -45,4 +45,4 @@ public:
     /// Compute padding needed to next 32-byte boundary.
     static inline size_t padNeeded32(size_t len) { return ((len + 31) / 32) * 32 - len; }
 };
-} // namespace TW::Ethereum::ABI
+} // namespace web3::ethereum::ABI

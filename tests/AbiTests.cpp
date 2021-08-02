@@ -7,7 +7,7 @@
 #include "ethereum/ABI.h"
 #include "HexCoding.h"
 
-#include <gtest.h>
+#include <gtest/gtest.h>
 
 using namespace web3::Ethereum::ABI;
 
